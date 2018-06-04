@@ -1,4 +1,33 @@
-
+//ex4 variables
+float x = 0;
+float y = 0;
+int z = 400;
+float l = 0;
+float m = 0;
+float k = 0;
+float o = 0;
+float g = 0;
+//ex5 variables
+float x5 = 0;
+float y5 = 0;
+//ex6 variables
+float x6;
+float y6;
+//ex7 variables
+int x7 = 10;
+int y7 = 10;
+//ex8 variables not applicable
+//ex9 variables
+int [] lines = new int [50];
+int z9 = 0;
+//ex10+11 variables
+String sentence10 = "The Quick Brown Fox jumps over the Lazy Dog.";
+String[] sentenceArray = new String[sentence10.length()];
+int capsNum, vowelsNum, letterRoof, punctuationNum, wordsNum, index;
+//ex12 variables
+String[] sentence;
+String text;
+int decision, capsNum12, vowelsNum12, letterMax, punctuationNum12, wordCount, index12;
 
 void setup() {
   size(800, 800);
@@ -106,15 +135,6 @@ void ex3() {
 }
 
 void ex4() {
-  float x = 0;
-  float y = 0;
-  int z = 400;
-  float l = 0;
-  float m = 0;
-  float k = 0;
-  float o = 0;
-  float g = 0;
-
   noStroke();
   colorMode(HSB, 240, 150, 50);
 
@@ -136,35 +156,51 @@ void ex4() {
 
 
 void ex5() {
-  float x = 0;
-  float y = 0;
-
-  x += .1;
-  y += 5;
-  fill(x % 255, y % 255, 100);
-  ellipse(x, y, 50, 50);
-  if (y == 850) {
-    y = 0;
-    x += 20;
+  x5 += .1;
+  y5 += 5;
+  fill(x5 % 255, y5 % 255, 100);
+  ellipse(x5, y5, 50, 50);
+  if (y5 == 850) {
+    y5 = 0;
+    x5 += 20;
   }
 }
 
 void ex6() {
+  size(400, 600);
+  background(255);
+  colorMode(HSB, 255, 255, 255);
+
+  x6 = 0;
+  while (x<=400) {
+    x6 += 15;
+    y6 = 0;
+    while (y<=600) {
+      y6 += 15;
+      if (x < mouseX && y < mouseY) {
+        fill(x6 % 200, y6, 201);
+        ellipse(x6, y6, 15, 15);
+      } else {
+        fill(255);
+        stroke(255);
+        ellipse(x6, y6, 15, 15);
+      }
+    }
+  }
 }
 
+
 void ex7() {
-  int x = 10;
-  int y = 10;
   colorMode(HSB);
 
-  x = 0;
-  for ( x = 0; x <= 500; x += 10) {
+  x7 = 0;
+  for ( x7 = 0; x7 <= 500; x7 += 10) {
     x += 15;
-    fill(x % 200, y, 201);
+    fill(x7 % 200, y7, 201);
     y = 5;
-    for ( y = 0; y<= 300; y += 10) {
-      y += 15;
-      ellipse(x, y, 23, 23);
+    for (y7 = 0; y7<= 300; y7 += 10) {
+      y7 += 15;
+      ellipse(x7, y7, 23, 23);
     }
   }
   for (int z = 300; z > 0; z--) {
@@ -179,66 +215,76 @@ void ex8() {
 }
 
 void ex9() {
-  int [] lines = new int [50];
-  int z = 0;
-
   for (int i = 0; i < lines.length; i++) {
     lines[i] = int(random(1, 400));
-    z += 2;
+    z9 += 2;
     if (lines[i] >= 200) {
       fill(0);
-      line(z, 400, z, lines[i]);
+      line(z9, 400, z9, lines[i]);
     } else if (lines[i]<200) {
       fill(0);
-      line(z, 0, z, lines[i]);
+      line(z9, 0, z9, lines[i]);
     }
   }
 }
 
 void ex10() {
-  String sentence = "The Quick Brown Fox jumps over the Lazy Dog.";
-  String[] sentenceArray = new String[sentence.length()];
-  int capsNum = 0, vowelsNum = 0, letterRoof = 0, punctuationNum = 0, wordsNum = 0, index = 0;
-
-  sentence = "The Quick, Brown Fox jumps over the Lazy Dog.";
-
+  background(0);
+  sentence10 = "The Quick, Brown Fox jumps over the Lazy Dog.";
+  stringLength(); //length of sentence
+  caps(); //number of capitals
+  vowels10(); //number of vowels
+  words(); //word count
+  punctuation10(); //number of punctuation marks
+  letterUse10(); //most used letter
   text("The sentence is - " + sentence, 50, 50);
+}
 
-  text("The sentence is " + sentence.length() + " letters long.", 50, 100); //displays number of letters
+void stringLength() {
+  text("The sentence is " + sentence10.length() + " letters long.", 50, 100); //displays number of letters
+}
 
-
-  for (int i = 0; i < sentence.length(); i ++) {
-    char c = sentence.charAt(i);
+void caps() {
+  for (int i = 0; i < sentence10.length(); i ++) {
+    char c = sentence10.charAt(i);
     if (c >= 'A' && c <='Z') {
       capsNum++;
     }
   }
   text("Number of caps - " + capsNum, 50, 150);
+}
 
-  for (int i = 0; i < sentence.length(); i++) {
-    char c = sentence.charAt(i);
+void vowels10() {
+  for (int i = 0; i < sentence10.length(); i++) {
+    char c = sentence10.charAt(i);
     if (c == 'a' || c == 'A' || c == 'e' || c == 'E' || c == 'i' || c == 'I' || c == 'o' || c == 'O' || c == 'u' || c == 'U') {
       vowelsNum++;
     }
   }
   text("Number of vowels - " + vowelsNum, 50, 200);
+}
 
-  for (int i = 0; i < sentence.length(); i++);
+void words() {
+  for (int i = 0; i < sentence10.length(); i++);
   {
-    String[] list = split(sentence, ' ');
+    String[] list = split(sentence10, ' ');
     wordsNum = list.length;
   }
   text("Number of words - " + wordsNum, 50, 250);
+}
 
-  for (int i = 0; i < sentence.length(); i++) {
-    char c = sentence.charAt(i);
+void punctuation10() {
+  for (int i = 0; i < sentence10.length(); i++) {
+    char c = sentence10.charAt(i);
     if (c == ';' || c == ':' || c == '.' || c == ',' || c == '?' || c == '!') {
       punctuationNum++;
     }
   }
   text("Number of punctuations - " + punctuationNum, 50, 300);
+}
 
-  char[] lowArray = sentence.toLowerCase().toCharArray();
+void letterUse10() {
+  char[] lowArray = sentence10.toLowerCase().toCharArray();
   int[] all = new int [26];
   for (int i = 0; i < lowArray.length; i++) {
     if (lowArray[i] >= 'a' && lowArray[i] <='z') {
@@ -261,4 +307,113 @@ void ex11() {
 }
 
 void ex12() {
+  background(0);
+  size(600,600);
+  fileSelect();
+  vowels();
+  textLength();
+  letterUse();
+  letterCaps();
+  wordCount();
+  punctuation();
+}
+
+void fileSelect(){
+  int files = int(random(1,7));
+  if (files == 1){
+    String rep[] = loadStrings("theRepublic.txt");
+    sentence = rep;
+    text = join(sentence, "\n");
+    text("The book is The Republic" , 50, 50);
+  } else if (files == 2){
+    String ham[] = loadStrings("hamlet.txt");
+    sentence = ham;
+    text = join(sentence, "\n");
+    text("The book is Hamlet" , 50, 50);
+  } else if (files == 3){
+    String ill[] = loadStrings("illiad.txt");
+    sentence = ill;
+    text = join(sentence, "\n");
+    text("The book is Illiad" , 50, 50);
+  } else if (files == 4){
+    String mac[] = loadStrings("macbeth.txt");
+    sentence = mac;
+    text = join(sentence, "\n");
+    text("The book is Macbeth" , 50, 50);
+  } else if (files == 5){
+    String oth[] = loadStrings("othello.txt");
+    sentence = oth;
+    text = join(sentence, "\n");
+    text("The book is Othello" , 50, 50);
+  } else if (files == 6){
+    String rom[] = loadStrings("romeoAndJuliet.txt");
+    sentence = rom;
+    text = join(sentence, "\n");
+    text("The book is Romeo & Juliet" , 50, 50);
+  } else if (files == 7){
+    String ody[] = loadStrings("theOdyssey.txt");
+    sentence = ody;
+    text = join(sentence, "\n");
+    text("The book is The Odyssey" , 50, 50);
+  }
+}
+
+void textLength(){
+  text("The sentence is " + text.length() + " letters long.", 50,100);
+}
+
+void vowels(){
+    for(int i = 0; i < text.length(); i++){
+    char c = text.charAt(i);
+    if (c == 'a' || c == 'A' || c == 'e' || c == 'E' || c == 'i' || c == 'I' || c == 'o' || c == 'O' || c == 'u' || c == 'U'){
+      vowelsNum12++;
+    }
+  }
+  text("Number of vowels - " + vowelsNum12, 50, 200);
+}
+
+void letterUse(){
+  char[] lowArray = text.toLowerCase().toCharArray();
+  int[] all = new int [26];
+  for(int i = 0; i < lowArray.length; i++){
+    if (lowArray[i] >= 'a' && lowArray[i] <='z'){
+      all[lowArray[i]- 'a']++;
+    }
+  }
+  for(int i = 0; i <all.length; i++){
+    if (all[i] > letterMax){
+      letterMax = all[i];
+      index12 = i;
+    }
+  }
+  char letterUse = char('a' + index12);
+  text("Most used letter - " + letterUse, 50, 350);
+}
+
+void letterCaps(){
+    for(int i = 0; i < text.length(); i ++){
+    char c = text.charAt(i);
+    if(c >= 'A' && c <='Z'){
+      capsNum12++;
+    }
+  }
+  text("Number of caps - " + capsNum12, 50, 150);
+}
+
+void wordCount(){
+    for(int i = 0; i < text.length(); i++);{
+    String[] list = split(text, ' ');
+    wordCount = list.length;
+  }
+  text("Number of words - " + wordCount, 50, 250);
+}
+
+void punctuation(){
+      for(int i = 0; i < text.length(); i++){
+    char c = text.charAt(i);
+    if (c == ';' || c == ':' || c == '.' || c == ',' || c == '?' || c == '!'){
+      punctuationNum12++;
+    }
+  }
+  text("Number of punctuations - " + punctuationNum12, 50, 300);
 }
