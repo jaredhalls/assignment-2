@@ -1,3 +1,11 @@
+//pasword variables
+Boolean incorrectAttempt = false, switchUsersClicked = false, exerciseRunning = false, runCodeOnce = true;
+int loginScreen = 0, userLoggedIn = 0, userSwitching = 0, superUserScreen = 1, menuActive = 0, menuBarY = 8, runExercise = 0;
+String passwordInput = "", asterisks = "", fieldHint = "Password";
+Password[] userLogin = new Password[3];
+String[] users = {"User A", "User B", "Super User"};
+//button variables
+int decider;
 //ex4 variables
 float x = 0;
 float y = 0;
@@ -32,11 +40,16 @@ int decision, capsNum12, vowelsNum12, letterMax, punctuationNum12, wordCount, in
 void setup() {
   size(800, 800);
   background(0);
+  userLogin[0] = new Password(users[0], "Hello");
+  userLogin[1] = new Password(users[1], "World!");
+  userLogin[2] = new Password(users[2], "P@s$w0rd123");
 }
 
 void draw() {
   buttons();
 }
+
+Password password = new Password();
 
 void buttons() {
   fill(255);
@@ -66,10 +79,75 @@ void buttons() {
   text("Exercise 10", -1+77, 725+20);
   text("Exercise 11", -1+152, 725+20);
   text("Exercise 12", -1+227, 725+20);
-}
+  //button presses and exercise selection
+  if (mousePressed) {
+    if (mouseX > -1 && mouseX < -1+75 && mouseY > 775 && mouseY < 775+20){
+      fill(0);
+      decider = 1;
+    } else if (mouseX > -1+75 && mouseX < -1+75+75 && mouseY > 775 && mouseY < 775+20){
+      fill(0);
+      decider = 2;
+    } else if (mouseX > -1+150 && mouseX < -1+150+75 && mouseY > 775 && mouseY < 775+70){
+      fill(0);
+      decider = 3;
+    } else if (mouseX > -1+225 && mouseX < -1+225+75 && mouseY > 775 && mouseY < 775+70){
+      fill(0);
+      decider = 4;
+    } else if (mouseX > -1 && mouseX < -1+75 && mouseY > 750 && mouseY < 750+20){
+      fill(0);
+      decider = 5;
+    } else if (mouseX > -1+75 && mouseX < -1+75+75 && mouseY > 750 && mouseY < 750+20){
+      fill(0);
+      decider = 6;
+    } else if (mouseX > -1+150 && mouseX < -1+150+75 && mouseY > 750 && mouseY < 750+70){
+      fill(0);
+      decider = 7;
+    } else if (mouseX > -1+225 && mouseX < -1+225+75 && mouseY > 750 && mouseY < 750+70){
+      fill(0);
+      decider = 8;
+    } else if (mouseX > -1 && mouseX < -1+75 && mouseY > 725 && mouseY < 725+20){
+      fill(0);
+      decider = 9;
+    } else if (mouseX > -1+75 && mouseX < -1+75+75 && mouseY > 725 && mouseY < 725+20){
+      fill(0);
+      decider = 10;
+    } else if (mouseX > -1+150 && mouseX < -1+150+75 && mouseY > 725 && mouseY < 725+70){
+      fill(0);
+      decider = 11;
+    } else if (mouseX > -1+225 && mouseX < -1+225+75 && mouseY > 725 && mouseY < 725+70){
+      fill(0);
+      decider = 12;
+    }
+  }
 
+
+  if (decider == 1) {
+    ex1();
+  } else if (decider == 2){
+    ex2();
+  } else if (decider == 3){
+    ex3();
+  } else if (decider == 4){
+    ex4();
+  } else if (decider == 5){
+    ex5();
+  } else if (decider == 6){
+    ex6();
+  } else if (decider == 7){
+    ex7();
+  } else if (decider == 8){
+    ex8();
+  } else if (decider == 9){
+    ex9();
+  } else if (decider == 10){
+    ex10();
+  } else if (decider == 11){
+    ex11();
+  } else if (decider == 12){
+    ex12();
+  }
+}
 void ex1() {
-  size(800, 600);
   //background
   background(135, 206, 250);
   textSize(32);
@@ -211,7 +289,8 @@ void ex7() {
 }
 
 void ex8() {
-  //not applicable
+  fill(255);
+  text("Not Applicable", 500, 500);
 }
 
 void ex9() {
@@ -303,12 +382,12 @@ void letterUse10() {
 
 
 void ex11() {
-  //incorporated in ex10
+  text("Part of exercise 10", 500, 500);
 }
 
 void ex12() {
   background(0);
-  size(600,600);
+  size(600, 600);
   fileSelect();
   vowels();
   textLength();
@@ -318,70 +397,70 @@ void ex12() {
   punctuation();
 }
 
-void fileSelect(){
-  int files = int(random(1,7));
-  if (files == 1){
+void fileSelect() {
+  int files = int(random(1, 7));
+  if (files == 1) {
     String rep[] = loadStrings("theRepublic.txt");
     sentence = rep;
     text = join(sentence, "\n");
-    text("The book is The Republic" , 50, 50);
-  } else if (files == 2){
+    text("The book is The Republic", 50, 50);
+  } else if (files == 2) {
     String ham[] = loadStrings("hamlet.txt");
     sentence = ham;
     text = join(sentence, "\n");
-    text("The book is Hamlet" , 50, 50);
-  } else if (files == 3){
+    text("The book is Hamlet", 50, 50);
+  } else if (files == 3) {
     String ill[] = loadStrings("illiad.txt");
     sentence = ill;
     text = join(sentence, "\n");
-    text("The book is Illiad" , 50, 50);
-  } else if (files == 4){
+    text("The book is Illiad", 50, 50);
+  } else if (files == 4) {
     String mac[] = loadStrings("macbeth.txt");
     sentence = mac;
     text = join(sentence, "\n");
-    text("The book is Macbeth" , 50, 50);
-  } else if (files == 5){
+    text("The book is Macbeth", 50, 50);
+  } else if (files == 5) {
     String oth[] = loadStrings("othello.txt");
     sentence = oth;
     text = join(sentence, "\n");
-    text("The book is Othello" , 50, 50);
-  } else if (files == 6){
+    text("The book is Othello", 50, 50);
+  } else if (files == 6) {
     String rom[] = loadStrings("romeoAndJuliet.txt");
     sentence = rom;
     text = join(sentence, "\n");
-    text("The book is Romeo & Juliet" , 50, 50);
-  } else if (files == 7){
+    text("The book is Romeo & Juliet", 50, 50);
+  } else if (files == 7) {
     String ody[] = loadStrings("theOdyssey.txt");
     sentence = ody;
     text = join(sentence, "\n");
-    text("The book is The Odyssey" , 50, 50);
+    text("The book is The Odyssey", 50, 50);
   }
 }
 
-void textLength(){
-  text("The sentence is " + text.length() + " letters long.", 50,100);
+void textLength() {
+  text("The sentence is " + text.length() + " letters long.", 50, 100);
 }
 
-void vowels(){
-    for(int i = 0; i < text.length(); i++){
+void vowels() {
+  for (int i = 0; i < text.length(); i++) {
     char c = text.charAt(i);
-    if (c == 'a' || c == 'A' || c == 'e' || c == 'E' || c == 'i' || c == 'I' || c == 'o' || c == 'O' || c == 'u' || c == 'U'){
+    if (c == 'a' || c == 'A' || c == 'e' || c == 'E' || c == 'i' || c == 'I' || c == 'o' || c == 'O' || c == 'u' || c == 'U') {
       vowelsNum12++;
     }
   }
   text("Number of vowels - " + vowelsNum12, 50, 200);
 }
 
-void letterUse(){
+void letterUse() {
   char[] lowArray = text.toLowerCase().toCharArray();
   int[] all = new int [26];
-  for(int i = 0; i < lowArray.length; i++){
-    if (lowArray[i] >= 'a' && lowArray[i] <='z'){
+  for (int i = 0; i < lowArray.length; i++) {
+    if (lowArray[i] >= 'a' && lowArray[i] <='z') {
       all[lowArray[i]- 'a']++;
     }
   }
-  for(int i = 0; i <all.length; i++){
-    if (all[i] > letterMax){
+  for (int i = 0; i <all.length; i++) {
+    if (all[i] > letterMax) {
       letterMax = all[i];
       index12 = i;
     }
@@ -390,28 +469,29 @@ void letterUse(){
   text("Most used letter - " + letterUse, 50, 350);
 }
 
-void letterCaps(){
-    for(int i = 0; i < text.length(); i ++){
+void letterCaps() {
+  for (int i = 0; i < text.length(); i ++) {
     char c = text.charAt(i);
-    if(c >= 'A' && c <='Z'){
+    if (c >= 'A' && c <='Z') {
       capsNum12++;
     }
   }
   text("Number of caps - " + capsNum12, 50, 150);
 }
 
-void wordCount(){
-    for(int i = 0; i < text.length(); i++);{
+void wordCount() {
+  for (int i = 0; i < text.length(); i++);
+  {
     String[] list = split(text, ' ');
     wordCount = list.length;
   }
   text("Number of words - " + wordCount, 50, 250);
 }
 
-void punctuation(){
-      for(int i = 0; i < text.length(); i++){
+void punctuation() {
+  for (int i = 0; i < text.length(); i++) {
     char c = text.charAt(i);
-    if (c == ';' || c == ':' || c == '.' || c == ',' || c == '?' || c == '!'){
+    if (c == ';' || c == ':' || c == '.' || c == ',' || c == '?' || c == '!') {
       punctuationNum12++;
     }
   }
