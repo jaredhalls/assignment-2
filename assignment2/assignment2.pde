@@ -32,10 +32,12 @@ int z9 = 0;
 String sentence10 = "The Quick Brown Fox jumps over the Lazy Dog.";
 String[] sentenceArray = new String[sentence10.length()];
 int capsNum, vowelsNum, letterRoof, punctuationNum, wordsNum, index;
+boolean stop10 = false;
 //ex12 variables
 String[] sentence;
 String text;
 int decision, capsNum12, vowelsNum12, letterMax, punctuationNum12, wordCount, index12;
+boolean stop12 = false;
 
 void setup() {
   size(800, 800);
@@ -245,17 +247,16 @@ void ex5() {
 }
 
 void ex6() {
-  size(400, 600);
   background(255);
   colorMode(HSB, 255, 255, 255);
 
   x6 = 0;
-  while (x<=400) {
+  while (x6<=400) {
     x6 += 15;
     y6 = 0;
-    while (y<=600) {
+    while (y6<=600) {
       y6 += 15;
-      if (x < mouseX && y < mouseY) {
+      if (x6 < mouseX && y6 < mouseY) {
         fill(x6 % 200, y6, 201);
         ellipse(x6, y6, 15, 15);
       } else {
@@ -298,17 +299,18 @@ void ex9() {
     lines[i] = int(random(1, 400));
     z9 += 2;
     if (lines[i] >= 200) {
-      fill(0);
+      fill(255);
       line(z9, 400, z9, lines[i]);
     } else if (lines[i]<200) {
-      fill(0);
+      fill(255);
       line(z9, 0, z9, lines[i]);
     }
   }
 }
 
 void ex10() {
-  background(0);
+  if (stop10 == false){
+  background(255);
   sentence10 = "The Quick, Brown Fox jumps over the Lazy Dog.";
   stringLength(); //length of sentence
   caps(); //number of capitals
@@ -316,7 +318,9 @@ void ex10() {
   words(); //word count
   punctuation10(); //number of punctuation marks
   letterUse10(); //most used letter
-  text("The sentence is - " + sentence, 50, 50);
+  text("The sentence is - " + sentence10, 50, 50);
+  stop10 = true;
+  }
 }
 
 void stringLength() {
@@ -386,8 +390,8 @@ void ex11() {
 }
 
 void ex12() {
-  background(0);
-  size(600, 600);
+  if (stop12 == false){
+  background(255);
   fileSelect();
   vowels();
   textLength();
@@ -395,6 +399,8 @@ void ex12() {
   letterCaps();
   wordCount();
   punctuation();
+  stop12 = true;
+  }
 }
 
 void fileSelect() {
